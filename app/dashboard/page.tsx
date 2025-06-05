@@ -71,14 +71,16 @@ export default function DashboardPage() {
   }
 
   if (!user) {
-    return <div className="min-h-screen bg-black flex items-center justify-center text-cyan-400">CARREGANDO MATRIX...</div>
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center text-cyan-400">CARREGANDO MATRIX...</div>
+    )
   }
 
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Animated Background */}
       <div className="fixed inset-0 bg-gradient-to-br from-purple-900/10 via-black to-cyan-900/10">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fillRule="evenodd"%3E%3Cg fill="%23ff00ff" fillOpacity=".03"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg>')] animate-pulse"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ff00ff%22%20fillOpacity%3D%22.03%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
       </div>
 
       {/* Header */}
@@ -105,7 +107,12 @@ export default function DashboardPage() {
               <User className="w-4 h-4" />
               <span className="hidden sm:inline">{user.name}</span>
             </div>
-            <Button variant="ghost" size="sm" onClick={handleLogout} className="text-red-400 hover:text-red-300 hover:bg-red-900/20">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleLogout}
+              className="text-red-400 hover:text-red-300 hover:bg-red-900/20"
+            >
               <LogOut className="w-4 h-4 mr-2" />
               Sair
             </Button>
@@ -134,14 +141,18 @@ export default function DashboardPage() {
           <Card className="bg-gradient-to-br from-gray-900/50 to-black/50 border-2 border-purple-500/30 shadow-xl shadow-purple-500/20 backdrop-blur-sm">
             <CardHeader className="pb-2">
               <CardDescription className="text-purple-300">Sites Publicados</CardDescription>
-              <CardTitle className="text-4xl text-purple-400">{sites.filter((site) => site.status === "published").length}</CardTitle>
+              <CardTitle className="text-4xl text-purple-400">
+                {sites.filter((site) => site.status === "published").length}
+              </CardTitle>
             </CardHeader>
           </Card>
 
           <Card className="bg-gradient-to-br from-gray-900/50 to-black/50 border-2 border-green-500/30 shadow-xl shadow-green-500/20 backdrop-blur-sm">
             <CardHeader className="pb-2">
               <CardDescription className="text-green-300">Total de Visualizações</CardDescription>
-              <CardTitle className="text-4xl text-green-400">{sites.reduce((total, site) => total + site.views, 0)}</CardTitle>
+              <CardTitle className="text-4xl text-green-400">
+                {sites.reduce((total, site) => total + site.views, 0)}
+              </CardTitle>
             </CardHeader>
           </Card>
         </div>
@@ -167,7 +178,10 @@ export default function DashboardPage() {
                     className="pl-10 w-full sm:w-64 bg-gray-900/50 border-cyan-500/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-cyan-400/20"
                   />
                 </div>
-                <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-black font-bold shadow-lg shadow-cyan-500/50" asChild>
+                <Button
+                  className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-black font-bold shadow-lg shadow-cyan-500/50"
+                  asChild
+                >
                   <Link href="/editor">
                     <Plus className="w-4 h-4 mr-2" />
                     Novo Site
@@ -188,7 +202,10 @@ export default function DashboardPage() {
                   {searchTerm ? "Tente buscar com outros termos" : "Comece criando seu primeiro site"}
                 </p>
                 {!searchTerm && (
-                  <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-black font-bold shadow-lg shadow-cyan-500/50" asChild>
+                  <Button
+                    className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-black font-bold shadow-lg shadow-cyan-500/50"
+                    asChild
+                  >
                     <Link href="/editor">
                       <Plus className="w-4 h-4 mr-2" />
                       Criar Primeiro Site
@@ -199,16 +216,22 @@ export default function DashboardPage() {
             ) : (
               <div className="grid gap-4">
                 {filteredSites.map((site) => (
-                  <Card key={site.id} className="bg-gradient-to-r from-gray-900/30 to-black/30 border border-cyan-500/20 hover:border-cyan-400/40 shadow-lg hover:shadow-cyan-500/20 transition-all backdrop-blur-sm">
+                  <Card
+                    key={site.id}
+                    className="bg-gradient-to-r from-gray-900/30 to-black/30 border border-cyan-500/20 hover:border-cyan-400/40 shadow-lg hover:shadow-cyan-500/20 transition-all backdrop-blur-sm"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className="text-xl font-semibold text-cyan-300">{site.name}</h3>
-                            <Badge className={site.status === "published" 
-                              ? "bg-green-500/20 text-green-300 border-green-500/50" 
-                              : "bg-yellow-500/20 text-yellow-300 border-yellow-500/50"
-                            }>
+                            <Badge
+                              className={
+                                site.status === "published"
+                                  ? "bg-green-500/20 text-green-300 border-green-500/50"
+                                  : "bg-yellow-500/20 text-yellow-300 border-yellow-500/50"
+                              }
+                            >
                               {site.status === "published" ? "Publicado" : "Rascunho"}
                             </Badge>
                           </div>
@@ -223,7 +246,12 @@ export default function DashboardPage() {
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <Button variant="ghost" size="sm" className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-900/20" asChild>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-900/20"
+                            asChild
+                          >
                             <Link href={`/editor/${site.id}`}>
                               <Edit className="w-4 h-4 mr-2" />
                               Editar
@@ -231,7 +259,12 @@ export default function DashboardPage() {
                           </Button>
 
                           {site.status === "published" && (
-                            <Button variant="ghost" size="sm" className="text-purple-400 hover:text-purple-300 hover:bg-purple-900/20" asChild>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-purple-400 hover:text-purple-300 hover:bg-purple-900/20"
+                              asChild
+                            >
                               <Link href={`/preview/${site.id}`} target="_blank">
                                 <Globe className="w-4 h-4 mr-2" />
                                 Ver Site

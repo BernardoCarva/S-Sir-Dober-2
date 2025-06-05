@@ -72,7 +72,7 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60\" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fillRule="evenodd"%3E%3Cg fill="%23ff00ff" fillOpacity="0.05"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ff00ff%22%20fillOpacity%3D%22.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
       </div>
 
       {/* Glowing orbs */}
@@ -102,9 +102,7 @@ export default function RegisterPage() {
             <CardTitle className="text-2xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               CRIAR SUA CONTA
             </CardTitle>
-            <CardDescription className="text-purple-200">
-              Comece a criar sites incríveis gratuitamente
-            </CardDescription>
+            <CardDescription className="text-purple-200">Comece a criar sites incríveis gratuitamente</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleRegister} className="space-y-4">
@@ -115,7 +113,9 @@ export default function RegisterPage() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-purple-300">Nome completo</Label>
+                <Label htmlFor="name" className="text-purple-300">
+                  Nome completo
+                </Label>
                 <Input
                   id="name"
                   name="name"
@@ -129,7 +129,9 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-purple-300">Email</Label>
+                <Label htmlFor="email" className="text-purple-300">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   name="email"
@@ -143,7 +145,9 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-purple-300">Senha</Label>
+                <Label htmlFor="password" className="text-purple-300">
+                  Senha
+                </Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -162,17 +166,15 @@ export default function RegisterPage() {
                     className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-purple-400"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </Button>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-purple-300">Confirmar senha</Label>
+                <Label htmlFor="confirmPassword" className="text-purple-300">
+                  Confirmar senha
+                </Label>
                 <Input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -200,9 +202,9 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-400 hover:to-cyan-400 text-black font-bold shadow-lg shadow-purple-500/50 hover:shadow-purple-400/70 transition-all" 
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-400 hover:to-cyan-400 text-black font-bold shadow-lg shadow-purple-500/50 hover:shadow-purple-400/70 transition-all"
                 disabled={loading}
               >
                 {loading ? "CRIANDO CONTA..." : "CRIAR CONTA GRATUITA"}
